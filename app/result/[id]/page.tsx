@@ -11,8 +11,8 @@ const sb = createClient(
 
 interface Shot { id: string; photo_url: string; status: string; }
 
-export default function GuestResultPage({ params }: { params: { id: string } }): JSX.Element {
-  const { id } = params;
+export default async function GuestResultPage({ params }: { params: Promise<{ id: string }> }): Promise<JSX.Element> {
+  const { id } = await params;
   const [shot,  setShot]  = useState<Shot | null>(null);
   const [error, setError] = useState('');
 
